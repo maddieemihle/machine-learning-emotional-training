@@ -60,16 +60,7 @@ This project explores whether machines can learn not just to detect emotions, bu
 - Grad-CAM and activation maps will be used next
 - The goal is to trace CNN attention back to mouth/eye regions to visualize "reasoning"
 
----
-
-## What's Next?
-
-- Request access to [RAF-DB](http://www.whdeng.cn/RAF/model1.html), a higher-quality, balanced dataset
-- Retrain the best models on RAF-DB
-- Integrate Grad-CAM to show what features influenced model predictions
-- Write final comparative analysis of model performance + explainability
-
----
+--- 
 
 ## File Structure
 
