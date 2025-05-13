@@ -6,8 +6,6 @@ This project investigates how Convolutional Neural Networks (CNNs) can be traine
 
 While emotion detection is common, emotional understanding and explainability are still emerging. This project begins that journey by benchmarking deep learning models on facial emotion classification using the FER2013 dataset.
 
----
-
 ## Introduction 
 
 As AI becomes more embedded in everyday aspects, they are also being involved in virtual therapy and mental wellness apps, social robotics and virtual assistants, emotion-aware learning environments. Emotionally intelligent systems are no longer optional, they’re essential.
