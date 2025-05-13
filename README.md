@@ -262,7 +262,7 @@ Listed below are the results summary snapshot, key findings and overall limitati
 | ResNet50   (ImageNet weights)         | 7           | ??                 | ???            | ??                | ??            |
 | ResNet50V2 (ImageNet weights)         | 7           | 22.23%             | 1.8511         | 24.76%            | 1.7979        |
 | EfficientNetB0 (ImageNet weights)     | 2           | 88.37%             | 0.6600         | 58.76%            | *N/A*         |
-| Mini-Xception (from scratch)          | 7           | *Pending*          | *Pending*      | *Pending*         | *Pending*     |
+| Mini-Xception (from scratch)          | 2           | *Pending*          | *Pending*      | *Pending*         | *Pending*     |
 | ResNet50 (ImageNet weights)           | 2           | 76.72%             | 0.5224         | 64.48%            | 0.6279        |
 | ResNet50V2 (ImageNet weights)         | 2           | 81.86%             | 0.4552         | 70.05%            | 0.5868        |
 | Sequential (from scratch) w/ weights  | 2           | 90.28%             | 0.2392         | 89.04%            | 0.2611        |
