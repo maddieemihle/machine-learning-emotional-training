@@ -1,55 +1,115 @@
-# Teaching Emotion Through Feature Matching Using CNNs
+# Teaching Emotion Through CNN Feature Matching: A Deep Learning Approach to Facial Expression Recognition
 
-## Project Overview
+This project is a part of the [Virtual Data Bootcamp at Vanderbilt University](https://bootcamps.vanderbilt.edu) with EdX. 
 
-This project investigates how Convolutional Neural Networks (CNNs) can be trained to recognize human emotions from facial images, not just by classifying, but by learning the facial features that matter most (like eyes, eyebrows, and mouth positions).
+### Group Members 
+* Madison Mihle
+* Kat Hardy
+* Lauralee Calahan 
 
-While emotion detection is common, emotional understanding and explainability are still emerging. This project begins that journey by benchmarking deep learning models on facial emotion classification using the FER2013 dataset.
-
+---
 ## Introduction 
 
-As AI becomes more embedded in everyday aspects, they are also being involved in virtual therapy and mental wellness apps, social robotics and virtual assistants, emotion-aware learning environments. Emotionally intelligent systems are no longer optional, they’re essential.
+In a world increasingly powered by human-AI interaction, emotional intelligence in machines is no longer a futuristic fantasy-—it’s a current demand. In other words? It's almost as essential as having a cell phone. From virtual therapy apps and customer service bots to AI tutors and socially intelligent robots, machines must now interpret, respond to, and even understand human emotions.
 
-This project explores whether machines can learn not just to detect emotions, but to explain their reasoning, making human-AI interaction more humane and trustworthy.
+However, while emotion detection is common, emotional understanding and explainability is still emerging. Can machines learn not only to detect emotions, but to explain their reasoning, making human-AI interaction more humane and trustworthy? 
+
+This project explores whether a machine can be taught not just to detect what emotion is present in a face, but to learn why. We approached this challenge through deep learning, building and evaluating multiple Convolutional Neural Network (CNN) architectures on the FER2013 dataset, ultimately developing models that aim to classify and eventually justify facial emotion recognition. 
 
 
-## Project Goals
+The objective of this project is to investigate how Convolutional Neural Networks (CNNs) can be trained to recognize human emotions from standard facial images. Not just by classifying, but by learning the facial features that matter most (like eyes, eyebrows, and mouth positions). Ultimately, this project explores whether machines can learn not only to detect emotions, but to explain their reasoning, making human-AI interaction more humane and trustworthy.
 
-- Train CNN models to classify emotions from facial expressions
-- Analyze *which facial features* influence the classification the most
-- Begin developing models that can “justify” their predictions through visual explanation tools (e.g., Grad-CAM)
-- Evaluate how deep learning performs on low-resolution emotion data, and test alternative approaches when needed
+--- 
+## Project Objective 
+To evaluate and compare deep learning models that classify emotions from facial images, using the FER2013 dataset as a base. We tested both pre-trained and from-scratch models across different class combinations (7, 4, 2), exploring performance, model limitations, and explainability.
+
+**Problem Statement**: Can a CNN accurately predict emotion from facial expression images, and how do different architectures compare in accuracy, performance, and robustness?
+
+### Goals:
+- Train CNN models using both pre-trained and from-scratch approaches using FER2013
+- Compare traditional deep learning architectures (ResNet, EfficientNet) to from-scratch models (VGG, Sequential)
+- Explore class reduction strategies and model fine-tuning
+- Evaluate accuracy and performance, even at the cost of failed experiments
+- Begin developing models that can “justify” their predictions through visual explanation tools (e.g., Webcam 'real-life' analysis and random image anaylsis)
+
+---
+## Dataset Description: 
+- **Name:** [FER2013](https://www.kaggle.com/datasets/msambare/fer2013)
+- **Format:** 48x48 grayscale images (converted to RGB in some models), CSV or directory-based with train/test folders
+- **Emotional Classes:** 7 original labels
+    * `angry`
+    * `disgust`
+    * `fear`
+    * `happy`
+    * `neutral`
+    * `sad`
+    * `surprise`
+- **Preprocessing:** Normalization, RGB conversion, class reduction 
+- **Training:** ~24,000 images
+- **Validation:** ~4,000 images
+- **Test:** ~7,000 images
+- **Processing:** Class reduction (from 7 → 4 → 2 in later models)
 
 ---
 
-## Process 
+## Technologies & Tools Used 
 
-*here is where we will put a step by step walk through of the code and how it was formulated for each of the models and the webcam visualizations and image visualizations.*
+| Category        | Tools/Libraries                                            |
+| --------------- | ---------------------------------------------------------- |
+| Language        | Python 3.11                                                |
+| Deep Learning   | TensorFlow, Keras, Scikit-learn                            |
+| Data Processing | Pandas, NumPy                                              |
+| IDE / Platforms | Visual Studio Code (VSCode), Jupyter Notebooks             |
+| Visualization   | Matplotlib, OpenCV (Haar Cascade - used for webcam demo)   |
 
-## Dataset Used: FER2013
+## Model Progression & Architecture Summary 
 
-[FER2013](https://www.kaggle.com/datasets/msambare/fer2013)
+The model exploration folled an iterative learning process. Each new architecture was built based on failures and findings from the one before it.
 
-- Format: 48x48 grayscale images (converted to RGB)
-- Categories: `angry`, `disgust`, `fear`, `happy`, `neutral`, `sad`, `surprise`
-- Training: ~24,000 images
-- Validation: ~4,000 images
-- Test: ~7,000 images
+### Models Tested & Timeline 
+We tested roughly 7 models in the following order: 
 
----
-
-## Models Tested
-
-| Model             | Training Method         | Weights       | Notes                                    |
+| Model            | Training Method         | Weights       | Notes                                    |
 |------------------|-------------------------|---------------|------------------------------------------|
-| **VGG16**        | From Scratch            | None          | Served as a baseline                     |
-| **ResNet50**     | Fine-tuned              | ImageNet      | Poor results, struggled with FER2013     |
-| **EfficientNetB0** | Fine-tuned            | ImageNet      | Unexpectedly failed — likely overfit     |
+| **VGG**          | From Scratch            | None          | Served as a baseline                     |
+| **VGG16**        | Pretrained              | None          | Better structure, but struggled with FER2013 |
+| **ResNet50**     | Pretrained, Fine-Tuned  | ImageNet      | Poor results, unstable                   |
+| **EfficientNetB0** | Pretrained, Fine-Tuned | ImageNet     | Unexpectedly failed — likely overfit     |
 | **Mini-Xception**| From Scratch            | None          | Custom for FER2013, lightweight          |
-| **ResNet50**     | Fine-tuned              | ????          | Dropped from 7 to 4 classes              |  
-| **ResNet50V2**   | Fine-tuned              | ????          | Only 2 classes                           |  
-| **Squential**    | From Scatch             | None          | 2 classes                                |  
-| **Squential**    | From Scatch             | None          | 4 classes                                |  
+| **ResNet50**     | Fine-Tuned (4-class)    | ????          | Class reduction improved consistency     |  
+| **ResNet50V2**   | Fine-Tuned (2-class)    | ????          | High-capacity model, still underfit      |  
+| **Squential**    | From Scatch (2-class)   | None          | Custom model trained on angry vs. happy only |  
+| **Squential**    | From Scatch (4-class)   | None          | Simplified architecture, reduced overfitting |  
+
+### Architecture Summary 
+
+#### 1. VGG16 ([01_vgg16.ipynb](01_vgg16.ipynb))
+- **Base Model**: VGG16 (pretrained on ImageNet or random weights)
+- **Input Shape**: `(48, 48, 3)`
+- **Custom Layers**:
+  - Flatten
+  - Dense (512 units, ReLU)
+  - Dropout (0.5)
+  - Dense (256 units, ReLU)
+  - Dropout (0.3)
+  - Dense (7 units, Softmax)
+- **Loss Function**: `CategoricalCrossentropy`
+- **Optimizer**: Adam (`learning_rate=1e-4`)
+- **Callbacks**: EarlyStopping, ReduceLROnPlateau
+
+#### 2. ResNet50 ([02_resnet50.ipynb](02_resnet50.ipynb))
+- **Base Model**: ResNet50 (pretrained on ImageNet)
+- **Input Shape**: `(48, 48, 3)`
+- **Custom Layers**:
+  - GlobalAveragePooling2D
+  - Dense (512 units, ReLU)
+  - Dropout (0.5)
+  - Dense (256 units, ReLU)
+  - Dropout (0.3)
+  - Dense (7 units, Softmax)
+- **Loss Function**: `CategoricalCrossentropy`
+- **Optimizer**: Adam (`learning_rate=1e-3` for initial training, `1e-5` for fine-tuning)
+- **Callbacks**: EarlyStopping, ReduceLROnPlateau
 ---
 
 ## Results 
