@@ -24,12 +24,19 @@ This project explores whether machines can learn not just to detect emotions, bu
 
 ---
 
+## Process 
+
+*here is where we will put a step by step walk through of the code and how it was formulated for each of the models and the webcam visualizations and image visualizations.*
+
 ## Dataset Used: FER2013
 
-- 48x48 grayscale facial images, converted to RGB
-- 7 emotions: `angry`, `disgust`, `fear`, `happy`, `neutral`, `sad`, `surprise`
-- Known for being small, noisy, and imbalanced — great for testing robustness
-- Split into training, validation, and test sets
+[FER2013](https://www.kaggle.com/datasets/msambare/fer2013)
+
+- Format: 48x48 grayscale images (converted to RGB)
+- Categories: `angry`, `disgust`, `fear`, `happy`, `neutral`, `sad`, `surprise`
+- Training: ~24,000 images
+- Validation: ~4,000 images
+- Test: ~7,000 images
 
 ---
 
@@ -40,11 +47,31 @@ This project explores whether machines can learn not just to detect emotions, bu
 | **VGG16**        | From Scratch            | None          | Served as a baseline                     |
 | **ResNet50**     | Fine-tuned              | ImageNet      | Poor results, struggled with FER2013     |
 | **EfficientNetB0** | Fine-tuned            | ImageNet      | Unexpectedly failed — likely overfit     |
-| **Mini-Xception**| In progress             | None          | Lightweight model designed for FER       |
-
+| **Mini-Xception**| From Scratch            | None          | Custom for FER2013, lightweight          |
+| **ResNet50**     | Fine-tuned              | ????          | Dropped from 7 to 4 classes              |  
+| **ResNet50V2**   | Fine-tuned              | ????          | Only 2 classes                           |  
+| **Squential**    | From Scatch             | None          | 2 classes                                |  
+| **Squential**    | From Scatch             | None          | 4 classes                                |  
 ---
 
-## Key Findings (So Far)
+## Results 
+
+### Results Summary (FER2013)
+
+| Model            | Final Accuracy | Loss      | Observations                          |
+|------------------|----------------|-----------|----------------------------------------|
+| VGG16            | ~43%           | 1.49      | Underfits, struggles with fear/disgust |
+| ResNet50 (FT)    | ~25–27%        | 1.9+      | Did not generalize well                |
+| EfficientNetB0 (FT) | ~1.5% (!)   | 1.93+     | Unexpected failure — likely overfitting |
+| Mini-Xception    | ??             | ???        | Better suited for FER2013              |
+| ResNet50 (4)     | ??             | ???        | ?????                                  |
+| ResNet50V2 (2)   | ??             | ???        | ?????                                  |
+| Sequential (2)   | ??             | ???        | ?????                                  |
+| Sequential (4)   | ??             | ???        | ?????                                  |
+
+* Note: Even pretrained models performed poorly, reinforcing FER2013's limitations as a training set for deep CNNs.
+
+### Key Findings
 
 - Pretrained models (even EfficientNet) struggled with FER2013
 - Imbalanced and low-resolution nature of FER2013 led to poor generalization
@@ -53,14 +80,20 @@ This project explores whether machines can learn not just to detect emotions, bu
 
 ---
 
-## In Progress: Visual Explanation
 
-> Can we show *why* a model thinks someone is angry?
+## Conclusion 
 
-- Grad-CAM and activation maps will be used next
-- The goal is to trace CNN attention back to mouth/eye regions to visualize "reasoning"
 
---- 
+** need to note that the FER2013 was in greyscale and I had to convert to rgb. The more complex models (i.e. ResNet50, ResNet50V2, EfficientNetB0) need to be in color (RGB). Also they have to have a three-channel and when I tried to change from 48, 48, 3 --> 1, the code would not run.
 
-## File Structure
 
+### Tools and Technologies Used
+- Haar Cascade (this is the webcame pre-existing library)
+
+
+
+### File Structure
+
+
+
+## Resources: 
