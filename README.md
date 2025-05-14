@@ -121,7 +121,7 @@ We tested roughly seven models in the following order:
   - Dense (256 units, ReLU)
   - Dropout (0.3)
   - Dense (7 units, Softmax)
-- **Epochs:**
+- **Epochs:** 30
 - **Loss Function**: `CategoricalCrossentropy`
 - **Optimizer**: Adam (`learning_rate=1e-3` for initial training, `1e-5` for fine-tuning)
 - **Callbacks**: EarlyStopping, ReduceLROnPlateau
@@ -305,7 +305,7 @@ Despite the limitations of FER2013, we developed a deep understanding of how mod
 
 Although our highest accuracy was achieved at approximately 94% (Sequential Model with 4-emotion classes), we would like to further explore this with deeper neural networks and train them to understand images better. However, overall, the process yielded invaluable insights. We compared eight distinct model strategies, introduced class balancing and reduction, and laid the groundwork for explainable AI integration. Most importantly, we discovered that simplicity, transparency, and adaptability remain vital in both human and artificial emotional intelligence systems.
 
-This project is not the end, but the beginning. With stronger datasets, deeper interpretability tools, and refined architectures, we are confident that emotionally aware and explainable AI is within reach and essential for the future of human-machine interaction.
+With stronger datasets, deeper interpretability tools, and refined architectures, we are confident that emotionally aware and explainable AI is within reach and essential for the future of human-machine interaction.
 
 ---
 ### How to Run This Code
