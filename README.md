@@ -7,7 +7,6 @@ This project is a part of the [Virtual Data Bootcamp at Vanderbilt University](h
 * Kat Hardy
 * Lauralee Callahan 
 
----
 ## Introduction 
 
 In a world increasingly powered by human-AI interaction, emotional intelligence in machines is no longer a futuristic fantasy—it’s a current demand. In other words? It's almost as essential as having a cell phone. From virtual therapy apps and customer service bots to AI tutors and socially intelligent robots, machines must now interpret, respond to, and even understand human emotions.
@@ -75,7 +74,7 @@ We tested roughly seven models in the following order:
 | **ResNet50V2**   | Pretrained, Fine-Tuned  | ImageNet      | Struggled                                |
 | **EfficientNetB0** | Pretrained, Fine-Tuned (2-classes) | ImageNet     | Preformed very well          |
 | **ResNet50**     | Fine-Tuned (4-class)    | ImageNet      | Class reduction improved consistency     |  
-| **ResNet50V2**   | Fine-Tuned (2-class)    | ImageNe       | High-capacity model, still underfit      |  
+| **ResNet50V2**   | Fine-Tuned (2-class)    | ImageNet       | High-capacity model, still underfit      |  
 | **Squential**    | From Scatch (2-class)   | None          | Custom model trained on angry vs. happy only |  
 | **Squential**    | From Scatch (4-class)   | None          | Simplified architecture, reduced overfitting |  
 
