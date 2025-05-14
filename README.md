@@ -318,7 +318,7 @@ Follow the steps below to set up and run the code in this repository:
    git clone https://github.com/maddieemihle/machine-learning-emotional-training.git
    cd machine-learning-emotional-training 
 2. **Open Notebooks (in your preferred environment)**
-3. Install Required Libraries 
+3. **Install Required Libraries** 
     * tensorflow
     * numpy
     * matplotlib
