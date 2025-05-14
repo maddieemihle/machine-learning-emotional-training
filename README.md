@@ -221,10 +221,10 @@ We tested roughly seven models in the following order:
 ---
 ## Evaluation Metrics
 
-**Accuracy**: Primary performance measure
-**Loss**: Categorical cross-entropy (with label smoothing in some models)
-**Class Weights:** Applied for imbalance handling
-**Visuals**: Training/validation curves (accuracy + loss), although many plots reflected underfitting or unstable models
+* **Accuracy**: Primary performance measure
+* **Loss**: Categorical cross-entropy (with label smoothing in some models)
+* **Class Weights:** Applied for imbalance handling
+* **Visuals**: Training/validation curves (accuracy + loss), although many plots reflected underfitting or unstable models
 
 ---
 ## Results 
