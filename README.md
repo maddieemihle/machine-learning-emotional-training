@@ -248,20 +248,17 @@ Listed below are the results summary snapshot, key findings, and overall limitat
 | ResNet50   (ImageNet weights)         | 7           | 19.09%             | 1.9099         | 19.52%            | 1.9204        |
 | ResNet50V2 (ImageNet weights)         | 7           | 22.23%             | 1.8511         | 24.76%            | 1.7979        |
 | EfficientNetB0 (ImageNet weights)     | 2           | 88.37%             | 0.6600         | 58.76%            | *N/A*         |
-| ResNet50 (ImageNet weights)           | 2           | 76.72%             | 0.5224         | 64.48%            | 0.6279        |
+| ResNet50 (ImageNet weights)           | 4 --> 2     | 76.72%             | 0.5224         | 64.48%            | 0.6279        |
 | ResNet50V2 (ImageNet weights)         | 2           | 81.86%             | 0.4552         | 70.05%            | 0.5868        |
 | Sequential (from scratch) w/ weights  | 2           | 90.28%             | 0.2392         | 89.04%            | 0.2611        |
 | Sequential (from scratch) w/ weights  | 4           | 96.68%             | 0.1246         | 94.68%            | 0.2155        |
 
 ### **Key Findings**
-#### What Worked
 - Class reduction improved performance
     * Moving from 7 emotion classes down to 2 and then attempting to build them back up to 4. 
 - Overall, simpler CNNs worked better than pre-trained on this dataset 
     * Simplified layers worked better. 
 - Class weights, label smoothing, and fine-tuning helped (but not enough)
-
-#### What Didn’t Work
 - Deep pretrained models overfit or fail to learn 
 - FER2013 was not ideal for complete model generalization
 - The imbalanced and low-resolution nature of FER2013 led to poor generalization
