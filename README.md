@@ -293,7 +293,7 @@ FER2013, while widely used in academic benchmarks, presents significant challeng
 
 ---
 ## Improvements & Future Directions
-- Re-run models on RAF-DB or AffectNet (currently awaiting access)
+- Re-run models on RAF-DB or AffectNet (files must be formally requested)
 - Implement Grad-CAM or SHAP for feature-level explanation
 - Consider multi-input models (e.g., combining face + voice + text for richer emotion detection)
 - Simplify models when using low-res or limited data; not all problems need ResNet50+
