@@ -64,7 +64,7 @@ To evaluate and compare deep learning models that classify emotions from facial 
 The model exploration followed an iterative learning process. Each new architecture was built based on failures and findings from the one before it.
 
 ### Models Tested & Timeline 
-We tested roughly seven models in the following order: 
+We tested roughly nine models in the following order: 
 
 | Model            | Training Method         | Weights       | Notes                                    |
 |------------------|-------------------------|---------------|------------------------------------------|
