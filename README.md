@@ -41,7 +41,7 @@ To evaluate and compare deep learning models that classify emotions from facial 
     * `sad`
     * `surprise`
 - **Preprocessing:** Normalization, RGB conversion, class reduction 
-- **Training:** ~24,000 images
+- **Training:** ~34,000 images
 - **Validation:** ~4,000 images
 - **Test:** ~7,000 images
 - **Processing:** Class reduction (from 7 → 4 → 2 in later models)
