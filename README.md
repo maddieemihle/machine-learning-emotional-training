@@ -66,17 +66,18 @@ The model exploration followed an iterative learning process. Each new architect
 ### Models Tested & Timeline 
 We tested roughly nine models in the following order: 
 
-| Model            | Training Method         | Weights       | Notes                                    |
-|------------------|-------------------------|---------------|------------------------------------------|
-| **VGG**          | From Scratch            | None          | Served as a baseline                     |
-| **VGG16**        | RGB Conversion          | ImageNet      | Better structure, but struggled with FER2013 |
-| **ResNet50**     | Pretrained, Fine-Tuned  | ImageNet      | Poor results, unstable                   |
-| **ResNet50V2**   | Pretrained, Fine-Tuned  | ImageNet      | Struggled                                |
-| **EfficientNetB0** | Pretrained, Fine-Tuned (2-classes) | ImageNet     | Preformed very well          |
-| **ResNet50**     | Fine-Tuned (4-class)    | ImageNet      | Class reduction improved consistency     |  
-| **ResNet50V2**   | Fine-Tuned (2-class)    | ImageNet       | High-capacity model, still underfit      |  
-| **Squential**    | From Scatch (2-class)   | None          | Custom model trained on angry vs. happy only |  
-| **Squential**    | From Scatch (4-class)   | None          | Simplified architecture, reduced overfitting |  
+### 🧠 Model Evaluation Summary
+| **Model**                  | **Classes** | **Training Method**         | **Weights** | **Notes**                                                                 |
+|----------------------------|-------------|-----------------------------|-------------|---------------------------------------------------------------------------|
+| **VGG**                    | 7           | From Scratch                | None        | Served as a baseline; limited performance due to dataset constraints.     |
+| **VGG16**                  | 7           | RGB Conversion              | ImageNet    | Improved structure over VGG; struggled with FER2013's limitations.        |
+| **ResNet50**               | 7           | Pretrained, Fine-Tuned      | ImageNet    | Unstable results; underperformed on FER2013 dataset.                      |
+| **ResNet50V2**             | 7           | Pretrained, Fine-Tuned      | ImageNet    | Encountered challenges; did not generalize well on FER2013.               |
+| **EfficientNetB0**         | 2           | Pretrained, Fine-Tuned      | ImageNet    | Performed well in binary classification tasks.                            |
+| **ResNet50**               | 4 → 2       | Fine-Tuned                  | ImageNet    | Class reduction enhanced consistency and performance.                     |
+| **ResNet50V2**             | 2           | Fine-Tuned                  | ImageNet    | High-capacity model; still faced underfitting issues.                     |
+| **Sequential (Custom CNN)**| 2           | From Scratch                | None        | Tailored model for 'angry' vs. 'happy'; achieved high accuracy.           |
+| **Sequential (Custom CNN)**| 4           | From Scratch                | None        | Simplified architecture; reduced overfitting and improved generalization. |
 
 ### Architecture Summary 
 
