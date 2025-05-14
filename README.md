@@ -10,11 +10,11 @@ This project is a part of the [Virtual Data Bootcamp at Vanderbilt University](h
 ---
 ## Introduction 
 
-In a world increasingly powered by human-AI interaction, emotional intelligence in machines is no longer a futuristic fantasy-—it’s a current demand. In other words? It's almost as essential as having a cell phone. From virtual therapy apps and customer service bots to AI tutors and socially intelligent robots, machines must now interpret, respond to, and even understand human emotions.
+In a world increasingly powered by human-AI interaction, emotional intelligence in machines is no longer a futuristic fantasy—it’s a current demand. In other words? It's almost as essential as having a cell phone. From virtual therapy apps and customer service bots to AI tutors and socially intelligent robots, machines must now interpret, respond to, and even understand human emotions.
 
-However, while emotion detection is common, emotional understanding and explainability is still emerging. Can machines learn not only to detect emotions, but to explain their reasoning, making human-AI interaction more humane and trustworthy? 
+However, while emotion detection is common, emotional understanding and explainability are still emerging. Can machines learn not only to detect emotions, but to explain their reasoning, making human-AI interaction more humane and trustworthy? 
 
-This project explores whether a machine can be taught not just to detect what emotion is present in a face, but to learn why. We approached this challenge through deep learning, building and evaluating multiple Convolutional Neural Network (CNN) architectures on the FER2013 dataset, ultimately developing models that aim to classify and eventually justify facial emotion recognition. 
+This project investigates whether a machine can be trained not only to detect the emotion present in a face, but also to learn the underlying reasons. We approached this challenge through deep learning, building and evaluating multiple Convolutional Neural Network (CNN) architectures on the FER2013 dataset, ultimately developing models that aim to classify and eventually justify facial emotion recognition. 
 
 --- 
 ## Project Objective 
@@ -27,7 +27,7 @@ To evaluate and compare deep learning models that classify emotions from facial 
 - Compare traditional deep learning architectures (ResNet, EfficientNet) to from-scratch models (VGG, Sequential)
 - Explore class reduction strategies and model fine-tuning
 - Evaluate accuracy and performance, even at the cost of failed experiments
-- Begin developing models that can “justify” their predictions through visual explanation tools (e.g., Webcam 'real-life' analysis and random image anaylsis)
+- Begin developing models that can “justify” their predictions through visual explanation tools (e.g., Webcam 'real-life' analysis and random image analysis)
 
 ---
 ## Dataset Description: 
@@ -62,10 +62,10 @@ To evaluate and compare deep learning models that classify emotions from facial 
 
 ## Model Progression & Architecture Summary 
 
-The model exploration folled an iterative learning process. Each new architecture was built based on failures and findings from the one before it.
+The model exploration followed an iterative learning process. Each new architecture was built based on failures and findings from the one before it.
 
 ### Models Tested & Timeline 
-We tested roughly 7 models in the following order: 
+We tested roughly seven models in the following order: 
 
 | Model            | Training Method         | Weights       | Notes                                    |
 |------------------|-------------------------|---------------|------------------------------------------|
@@ -74,7 +74,6 @@ We tested roughly 7 models in the following order:
 | **ResNet50**     | Pretrained, Fine-Tuned  | ImageNet      | Poor results, unstable                   |
 | **ResNet50V2**   | Pretrained, Fine-Tuned  | ImageNet      | Struggled                                |
 | **EfficientNetB0** | Pretrained, Fine-Tuned (2-classes) | ImageNet     | Preformed very well          |
-| **Mini-Xception**| From Scratch            | None          | Custom for FER2013, lightweight          |
 | **ResNet50**     | Fine-Tuned (4-class)    | ImageNet      | Class reduction improved consistency     |  
 | **ResNet50V2**   | Fine-Tuned (2-class)    | ImageNe       | High-capacity model, still underfit      |  
 | **Squential**    | From Scatch (2-class)   | None          | Custom model trained on angry vs. happy only |  
@@ -158,23 +157,7 @@ We tested roughly 7 models in the following order:
 - **Optimizer**: Adam (`learning_rate=1e-4` for initial training, `1e-5` for fine-tuning)
 - **Callbacks**: EarlyStopping, ReduceLROnPlateau
 
-#### 4. Mini-Xception ([04_mini_xception.ipynb](04_mini_xception.ipynb))
-- **Custom Architecture**:
-  - Initial Block: Conv2D → BatchNorm → ReLU
-  - Residual Blocks: Conv2D → BatchNorm → ReLU → Add (residual connection)
-  - Final Block:
-    - GlobalAveragePooling2D
-    - Dropout (0.5)
-    - Dense (256 units, ReLU)
-    - Dropout (0.3)
-    - Dense (7 units, Softmax)
-- **Input Shape**: `(48, 48, 3)`
-- **Epochs:** 30
-- **Loss Function**: `CategoricalCrossentropy` (with label smoothing)
-- **Optimizer**: Adam (`learning_rate=1e-4`)
-- **Callbacks**: EarlyStopping, ReduceLROnPlateau
-
-#### 5.1. ResNet50 ([05_resnet50v2.ipynb](05_resnet50v2.ipynb))
+#### 4.1. ResNet50 ([04_resnet50v2.ipynb](04_resnet50v2.ipynb))
 - **Base Model**: ResNet50 (pretrained on ImageNet)
 - **Image Classes:** Dropped down to 4 
 - **Input Shape**: `(48, 48, 3)`
@@ -190,9 +173,9 @@ We tested roughly 7 models in the following order:
 - **Optimizer**: Adam (`learning_rate=1e-3` for initial training, `1e-5` for fine-tuning)
 - **Callbacks**: EarlyStopping, ReduceLROnPlateau
 
-#### 5.2. ResNet50V2 ([05_resnet50v2.ipynb](05_resnet50v2.ipynb))
+#### 4.2. ResNet50V2 ([04_resnet50v2.ipynb](04_resnet50v2.ipynb))
 - **Base Model**: ResNet50V2 (pretrained on ImageNet)
-- **Image Classes:** Dropped down to 4 classes then 2 
+- **Image Classes:** Dropped down to 4 classes, then 2 
 - **Input Shape**: `(48, 48, 3)`
 - **Custom Layers**:
   - GlobalAveragePooling2D
@@ -206,7 +189,7 @@ We tested roughly 7 models in the following order:
 - **Optimizer**: Adam (`learning_rate=1e-3` for initial training, `1e-5` for fine-tuning)
 - **Callbacks**: EarlyStopping, ReduceLROnPlateau
 
-#### 6. Sequential Model ([06_sequential.ipynb](06_sequential.ipynb))
+#### 5. Sequential Model ([05_sequential.ipynb](05_sequential.ipynb))
 - **Image Classes:** 2 classes only 
 - **Custom Architecture**:
   - Conv2D → MaxPooling2D
@@ -221,7 +204,7 @@ We tested roughly 7 models in the following order:
 - **Optimizer**: Adam
 - **Callbacks**: EarlyStopping
 
-#### 7. Sequential Model (V2) ([07_sequential2.0.ipynb](07_sequential2.0.ipynb))
+#### 6. Sequential Model (V2) ([06_sequential2.0.ipynb](06_sequential2.0.ipynb))
 - **Image Classes:** 4 classes  
 - **Custom Architecture**:
   - Conv2D → MaxPooling2D
@@ -247,11 +230,11 @@ We tested roughly 7 models in the following order:
 ---
 ## Results 
 
-Overall, there were many hendernces with the models both made from-scratch and pretrained. 
+Overall, there were many hindrances with the models, both made from scratch and pretrained. 
 
-It is important to note that it was discovered later on that FER2013 had _significant_ limitations when it came to deep CNNs due to its imbalanced and low-resolution nature of the dataset and images. This lead to poor generalization. In fact, two academic reviews in 2023 on emotion recognition called FER2013 “inadequate for training deep networks without heavy preprocessing and balancing.” _Yalçin and Alisawi_ (2023) analyzed FER2013 and identified several issues, including the inclusion of non-facial photos, inaccurate face cropping, and partial occlusion, which hinder the performance of deep learning models without significant preprocessing. _Gursesli et al._ (2023) emphasized that due to FER2013's small size, grayscale format, and class imbalance, deep learning models often struggle to generalize effectively without substantial data augmentation and balancing techniques.
+It is important to note that FER2013 was later found to have significant limitations when it came to deep CNNs, due to the imbalanced and low-resolution nature of the dataset and images. This lead to poor generalization. In fact, two academic reviews in 2023 on emotion recognition called FER2013 “inadequate for training deep networks without heavy preprocessing and balancing.” _Yalçin and Alisawi_ (2023) analyzed FER2013 and identified several issues, including the inclusion of non-facial photos, inaccurate face cropping, and partial occlusion, which hinder the performance of deep learning models without significant preprocessing. _Gursesli et al._ (2023) emphasized that due to FER2013's small size, grayscale format, and class imbalance, deep learning models often struggle to generalize effectively without substantial data augmentation and balancing techniques.
 
-Listed below are the results summary snapshot, key findings and overall limitations. 
+Listed below are the results summary snapshot, key findings, and overall limitations. 
 
 ### **Results Summary Snapshot**
 
@@ -259,41 +242,40 @@ Listed below are the results summary snapshot, key findings and overall limitati
 |---------------------------------------|-------------|--------------------|----------------|-------------------|---------------|
 | VGG (from scratch)                    | 7           | 22.23%             | 1.8796         | 24.75%            | 1.8126        |
 | VGG16 w/ RGB Conversion               | 7           | 33.99%             | 1.6217         | 42.45%            | 1.4808        |
-| ResNet50   (ImageNet weights)         | 7           | ??                 | ???            | ??                | ??            |
+| ResNet50   (ImageNet weights)         | 7           | 19.09%             | 1.9099         | 19.52             | 1.9204        |
 | ResNet50V2 (ImageNet weights)         | 7           | 22.23%             | 1.8511         | 24.76%            | 1.7979        |
 | EfficientNetB0 (ImageNet weights)     | 2           | 88.37%             | 0.6600         | 58.76%            | *N/A*         |
-| Mini-Xception (from scratch)          | 2           | *Pending*          | *Pending*      | *Pending*         | *Pending*     |
 | ResNet50 (ImageNet weights)           | 2           | 76.72%             | 0.5224         | 64.48%            | 0.6279        |
 | ResNet50V2 (ImageNet weights)         | 2           | 81.86%             | 0.4552         | 70.05%            | 0.5868        |
 | Sequential (from scratch) w/ weights  | 2           | 90.28%             | 0.2392         | 89.04%            | 0.2611        |
 | Sequential (from scratch) w/ weights  | 4           | 96.68%             | 0.1246         | 94.68%            | 0.2155        |
 
-
 ### **Key Findings**
 #### What Worked
 - Class reduction improved performance
     * Moving from 7 emotion classes down to 2 and then attempting to build them back up to 4. 
-- Overall, simpler CNNs worked better than pretrained on this dataset
+- Overall, simpler CNNs worked better than pre-trained on this dataset
 - Class weights, label smoothing, and fine-tuning helped (but not enough)
 
 #### What Didn’t Work
-- Deep pretrained models overfit or failed to learn 
-- FER2013 was not ideal for full model generalization
-- Imbalanced and low-resolution nature of FER2013 led to poor generalization
+- Deep pretrained models overfit or fail to learn 
+- FER2013 was not ideal for complete model generalization
+- The imbalanced and low-resolution nature of FER2013 led to poor generalization
 
 ### **Limitations**
-Despite our best efforts, this project faced several important constraints — both technical and data-related — which directly impacted model performance and reliability.
+Despite our best efforts, this project encountered several significant constraints (both technical and data-related) that directly impacted model performance and reliability.
 
 #### 1) Dataset Quality: The FER2013 Trap
-FER2013, while widely used in academic benchmarks, presents major challenges for modern CNN architectures:
+FER2013, while widely used in academic benchmarks, presents significant challenges for modern CNN architectures:
 * **Size**: At ~35,000 images, FER2013 is too small to support large-scale deep learning without significant augmentation or transfer learning.
 * **Resolution**: All images are 48×48 pixels, which limits the granularity of detectable facial features, particularly for subtle emotions like fear or disgust.
+* **Occlusion**: Most facial features were covered, making it hard to analyze. 
 * **Color Mode:** The dataset is grayscale, and converting it to RGB introduces artificial noise without additional information.
 * **Label Imbalance**: Emotion classes like "disgust" comprise less than 2% of the total dataset. This imbalance heavily biases model training.
 * **Label Noise:** Emotional expression labeling is highly subjective. As a result, some examples are mislabeled or ambiguous.
 
 #### 2) Model Limitations
-* Pretrained CNNs (e.g., ResNet50, EfficientNetB0) showed poor convergence on FER2013. This is likely due to the mismatch between their feature complexity and the dataset's simplicity.
+* Pretrained CNNs (e.g., ResNet50, EfficientNetB0) showed poor convergence on FER2013. This is likely due to the mismatch between the feature complexity of their model and the simplicity of the dataset.
 * Sequential models trained from scratch, while better performing, are limited in their capacity to generalize beyond binary or simplified multi-class tasks.
 * Fine-tuning pretrained weights improved training stability but failed to yield significant accuracy gains.
 
@@ -303,7 +285,7 @@ FER2013, while widely used in academic benchmarks, presents major challenges for
 * GPU constraints prevented extended training cycles, model stacking, or ensemble experimentation.
 
 #### 4) Explainability Limitations
-* While explainability was a major goal of this project, Grad-CAM (Selvaraju _et al.,_ 2017) was only briefly explored and not successfully implemented across models. We wanted to expand this further but limiations restricted us. 
+* While explainability was a major goal of this project, Grad-CAM (Selvaraju _et al.,_ 2017) was only briefly explored and not successfully implemented across models. We wanted to expand this further, but limitations restricted us. 
 * We successfully integrated Haar Cascade-based face detection using OpenCV for webcam testing. However, this feature does not contribute to model interpretability, only basic recognition.
 * Future work will focus on integrating Grad-CAM to visualize attention regions in predicted facial expressions.
 
@@ -321,9 +303,9 @@ This project was a bold exploration of one of AI's most human-facing challenges:
 
 Despite the limitations of FER2013, we developed a deep understanding of how modern CNN architectures interact with imperfect data. Our experiments highlight a crucial insight: bigger isn’t always better. In domains like emotion recognition, data quality, context, and interpretability often outweigh raw model complexity. 
 
-Though our highest accuracy fell at about 94% (Sequential Model with 4-emotion classes), we would like to further explore with deeper neural networks and training them to better understand images. However, overall, the process yielded invaluable insights. We compared eight distinct model strategies, introduced class balancing and reduction, and laid the groundwork for explainable AI integration. Most importantly, we discovered that simplicity, transparency, and adaptability remain vital in emotional intelligence systems — both human and artificial.
+Although our highest accuracy was achieved at approximately 94% (Sequential Model with 4-emotion classes), we would like to further explore this with deeper neural networks and train them to understand images better. However, overall, the process yielded invaluable insights. We compared eight distinct model strategies, introduced class balancing and reduction, and laid the groundwork for explainable AI integration. Most importantly, we discovered that simplicity, transparency, and adaptability remain vital in both human and artificial emotional intelligence systems.
 
-This project is not the end, but the beginning. With stronger datasets, deeper interpretability tools, and refined architectures, we are confident that emotionally aware and explainable AI is within reach, and essential for the future of human-machine interaction.
+This project is not the end, but the beginning. With stronger datasets, deeper interpretability tools, and refined architectures, we are confident that emotionally aware and explainable AI is within reach and essential for the future of human-machine interaction.
 
 ---
 ### How to Run This Code
@@ -354,18 +336,17 @@ Follow the steps below to set up and run the code in this repository:
     * Use the visualizations and metrics to analyze model performance.
 
 ### File Structure
-        machine-learning-emotional-training/
+    machine-learning-emotional-training/
         ├── FER2013/                         # Emotion dataset (7-class, later reduced)
         ├── prediction_trials/              # Webcam and live prediction experiments
         ├── 01_vgg16.ipynb
         ├── 02_resnet50.ipynb
         ├── 03_efficientnet.ipynb
-        ├── 04_mini_xception.ipynb
-        ├── 05_resnet50v2.ipynb
-        ├── 06_sequential.ipynb
-        ├── 07_sequential2.0.ipynb           
-        ├── 08_scratch_prediction_img.ipynb
-        ├── 09_scratch_web_cam.ipynb
+        ├── 04_resnet50v2.ipynb
+        ├── 05_sequential.ipynb
+        ├── 06_sequential2.0.ipynb           
+        ├── 07_scratch_prediction_img.ipynb
+        ├── 08_scratch_web_cam.ipynb
         ├── scratch_model.h5                # Saved sequential model
         ├── README.md
 
