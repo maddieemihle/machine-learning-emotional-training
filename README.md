@@ -66,7 +66,7 @@ The model exploration followed an iterative learning process. Each new architect
 ### Models Tested & Timeline 
 We tested roughly nine models in the following order: 
 
-### 🧠 Model Evaluation Summary
+### Model Evaluation Summary
 | **Model**                  | **Classes** | **Training Method**         | **Weights** | **Notes**                                                                 |
 |----------------------------|-------------|-----------------------------|-------------|---------------------------------------------------------------------------|
 | **VGG**                    | 7           | From Scratch                | None        | Served as a baseline; limited performance due to dataset constraints.     |
@@ -78,6 +78,8 @@ We tested roughly nine models in the following order:
 | **ResNet50V2**             | 2           | Fine-Tuned                  | ImageNet    | High-capacity model; still faced underfitting issues.                     |
 | **Sequential (Custom CNN)**| 2           | From Scratch                | None        | Tailored model for 'angry' vs. 'happy'; achieved high accuracy.           |
 | **Sequential (Custom CNN)**| 4           | From Scratch                | None        | Simplified architecture; reduced overfitting and improved generalization. |
+
+**NOTE: Further explanation and results listed in results section**
 
 ### Architecture Summary 
 
