@@ -83,6 +83,7 @@ We tested roughly seven models in the following order:
 #### 1.1. VGG ([01_vgg16.ipynb](01_vgg16.ipynb))
 - **Base Model**: VGG (from scratch/no weights)
 - **Input Shape**: `(48, 48, 3)`
+- **Image Classes**: 7-classes 
 - **Custom Layers**:
   - Flatten
   - Dense (512 units, ReLU)
@@ -98,6 +99,7 @@ We tested roughly seven models in the following order:
 #### 1.2. VGG16 ([01_vgg16.ipynb](01_vgg16.ipynb))
 - **Base Model**: VGG16 (pretrained on random weights)
 - **Input Shape**: `(48, 48, 3)`
+- **Image Classes**: 7-classes
 - **Custom Layers**:
   - Flatten
   - Dense (512 units, ReLU)
@@ -113,6 +115,7 @@ We tested roughly seven models in the following order:
 #### 2.1. ResNet50 ([02_resnet50.ipynb](02_resnet50.ipynb))
 - **Base Model**: ResNet50 (pretrained on ImageNet)
 - **Input Shape**: `(48, 48, 3)`
+- **Image Classes**: 7-classes
 - **Custom Layers**:
   - GlobalAveragePooling2D
   - Dense (512 units, ReLU)
@@ -128,6 +131,7 @@ We tested roughly seven models in the following order:
 #### 2.2. ResNet50V2 ([02_resnet50.ipynb](02_resnet50.ipynb))
 - **Base Model**: ResNet50V2 (pretrained on ImageNet)
 - **Input Shape**: `(48, 48, 3)`
+- **Image Classes**: 7-classes
 - **Custom Layers**:
   - GlobalAveragePooling2D
   - Dense (512 units, ReLU)
@@ -158,7 +162,7 @@ We tested roughly seven models in the following order:
 
 #### 4.1. ResNet50 ([04_resnet50v2.ipynb](04_resnet50v2.ipynb))
 - **Base Model**: ResNet50 (pretrained on ImageNet)
-- **Image Classes:** Dropped down to 4 
+- **Image Classes:** 4-classes (dropped from 4 to 2)
 - **Input Shape**: `(48, 48, 3)`
 - **Custom Layers**:
   - GlobalAveragePooling2D
@@ -174,7 +178,7 @@ We tested roughly seven models in the following order:
 
 #### 4.2. ResNet50V2 ([04_resnet50v2.ipynb](04_resnet50v2.ipynb))
 - **Base Model**: ResNet50V2 (pretrained on ImageNet)
-- **Image Classes:** Dropped down to 4 classes, then 2 
+- **Image Classes:** 4-classes (dropped from 4 to 2) 
 - **Input Shape**: `(48, 48, 3)`
 - **Custom Layers**:
   - GlobalAveragePooling2D
@@ -189,7 +193,7 @@ We tested roughly seven models in the following order:
 - **Callbacks**: EarlyStopping, ReduceLROnPlateau
 
 #### 5. Sequential Model ([05_sequential.ipynb](05_sequential.ipynb))
-- **Image Classes:** 2 classes only 
+- **Image Classes:** 2-classes  
 - **Custom Architecture**:
   - Conv2D → MaxPooling2D
   - Conv2D → MaxPooling2D
@@ -204,7 +208,7 @@ We tested roughly seven models in the following order:
 - **Callbacks**: EarlyStopping
 
 #### 6. Sequential Model (V2) ([06_sequential2.0.ipynb](06_sequential2.0.ipynb))
-- **Image Classes:** 4 classes  
+- **Image Classes:** 4-classes  
 - **Custom Architecture**:
   - Conv2D → MaxPooling2D
   - Conv2D → MaxPooling2D
