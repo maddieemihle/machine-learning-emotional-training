@@ -245,7 +245,7 @@ Listed below are the results summary snapshot, key findings, and overall limitat
 |---------------------------------------|-------------|--------------------|----------------|-------------------|---------------|
 | VGG (from scratch)                    | 7           | 22.23%             | 1.8796         | 24.75%            | 1.8126        |
 | VGG16 w/ RGB Conversion               | 7           | 33.99%             | 1.6217         | 42.45%            | 1.4808        |
-| ResNet50   (ImageNet weights)         | 7           | 19.09%             | 1.9099         | 19.52             | 1.9204        |
+| ResNet50   (ImageNet weights)         | 7           | 19.09%             | 1.9099         | 19.52%            | 1.9204        |
 | ResNet50V2 (ImageNet weights)         | 7           | 22.23%             | 1.8511         | 24.76%            | 1.7979        |
 | EfficientNetB0 (ImageNet weights)     | 2           | 88.37%             | 0.6600         | 58.76%            | *N/A*         |
 | ResNet50 (ImageNet weights)           | 2           | 76.72%             | 0.5224         | 64.48%            | 0.6279        |
