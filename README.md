@@ -254,7 +254,8 @@ Listed below are the results summary snapshot, key findings, and overall limitat
 #### What Worked
 - Class reduction improved performance
     * Moving from 7 emotion classes down to 2 and then attempting to build them back up to 4. 
-- Overall, simpler CNNs worked better than pre-trained on this dataset
+- Overall, simpler CNNs worked better than pre-trained on this dataset 
+    * Simplified layers worked better. 
 - Class weights, label smoothing, and fine-tuning helped (but not enough)
 
 #### What Didn’t Work
