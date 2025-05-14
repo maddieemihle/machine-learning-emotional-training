@@ -56,7 +56,7 @@ To evaluate and compare deep learning models that classify emotions from facial 
 | Deep Learning   | TensorFlow, Keras, Scikit-learn                            |
 | Data Processing | Pandas, NumPy                                              |
 | IDE / Platforms | Visual Studio Code (VSCode), Jupyter Notebooks             |
-| Visualization   | Matplotlib, OpenCV (Haar Cascade - used for webcam demo)   |
+| Visualization   | Matplotlib                                                 |
 | Computer Vision | OpenCV (Haar Cascade - used for webcam demo)               |
 
 ## Model Progression & Architecture Summary 
@@ -76,8 +76,8 @@ We tested roughly nine models in the following order:
 | **EfficientNetB0**         | 2           | Pretrained, Fine-Tuned      | ImageNet    | Performed well in binary classification tasks.                            |
 | **ResNet50**               | 4 → 2       | Fine-Tuned                  | ImageNet    | Class reduction enhanced consistency and performance.                     |
 | **ResNet50V2**             | 2           | Fine-Tuned                  | ImageNet    | High-capacity model; still faced underfitting issues.                     |
-| **Sequential (Custom CNN)**| 2           | From Scratch                | None        | Tailored model for 'angry' vs. 'happy'; achieved high accuracy.           |
-| **Sequential (Custom CNN)**| 4           | From Scratch                | None        | Simplified architecture; reduced overfitting and improved generalization. |
+| **Sequential Scratch (Custom CNN)**| 2           | From Scratch                | None        | Tailored model for 'angry' vs. 'happy'; achieved high accuracy.           |
+| **Sequential ScratchV2 (Custom CNN)**| 4           | From Scratch                | None        | Simplified architecture; reduced overfitting and improved generalization. |
 
 **NOTE: Further explanation and results listed in results section**
 
@@ -195,7 +195,7 @@ We tested roughly nine models in the following order:
 - **Optimizer**: Adam (`learning_rate=1e-3` for initial training, `1e-5` for fine-tuning)
 - **Callbacks**: EarlyStopping, ReduceLROnPlateau
 
-#### 5. Sequential Model ([05_sequential.ipynb](05_sequential.ipynb))
+#### 5. Sequential Scratch Model ([05_sequential.ipynb](05_sequential.ipynb))
 - **Image Classes:** 2-classes  
 - **Custom Architecture**:
   - Conv2D → MaxPooling2D
@@ -210,7 +210,7 @@ We tested roughly nine models in the following order:
 - **Optimizer**: Adam
 - **Callbacks**: EarlyStopping
 
-#### 6. Sequential Model (V2) ([06_sequential2.0.ipynb](06_sequential2.0.ipynb))
+#### 6. Sequential ScratchV2 Model ([06_sequential2.0.ipynb](06_sequential2.0.ipynb))
 - **Image Classes:** 4-classes  
 - **Custom Architecture**:
   - Conv2D → MaxPooling2D
@@ -242,19 +242,20 @@ It is important to note that FER2013 was later found to have significant limitat
 
 Listed below are the results summary snapshot, key findings, and overall limitations. 
 
-### **Results Summary Snapshot**
+### **Model Performance Summary**
 
-| **Model**                             | **Classes** | **Train Accuracy** | **Train Loss** | **Test Accuracy** | **Test Loss** |
-|---------------------------------------|-------------|--------------------|----------------|-------------------|---------------|
-| VGG (from scratch)                    | 7           | 22.23%             | 1.8796         | 24.75%            | 1.8126        |
-| VGG16 w/ RGB Conversion               | 7           | 33.99%             | 1.6217         | 42.45%            | 1.4808        |
-| ResNet50   (ImageNet weights)         | 7           | 19.09%             | 1.9099         | 19.52%            | 1.9204        |
-| ResNet50V2 (ImageNet weights)         | 7           | 22.23%             | 1.8511         | 24.76%            | 1.7979        |
-| EfficientNetB0 (ImageNet weights)     | 2           | 88.37%             | 0.6600         | 58.76%            | *N/A*         |
-| ResNet50 (ImageNet weights)           | 4 → 2       | 76.72%             | 0.5224         | 64.48%            | 0.6279        |
-| ResNet50V2 (ImageNet weights)         | 2           | 81.86%             | 0.4552         | 70.05%            | 0.5868        |
-| Sequential (from scratch) w/ weights  | 2           | 90.28%             | 0.2392         | 89.04%            | 0.2611        |
-| Sequential (from scratch) w/ weights  | 4           | 96.68%             | 0.1246         | 94.68%            | 0.2155        |
+| **Model**                         | **Emotion Classes** | **Weights**  | **Train Accuracy** | **Train Loss** | **Test Accuracy** | **Test Loss** |
+|----------------------------------|----------------------|--------------|--------------------|----------------|-------------------|---------------|
+| VGG                              | 7                    | None         | 22.23%             | 1.8796         | 24.75%            | 1.8126        |
+| VGG16                            | 7                    | RGB Conversion | 33.99%           | 1.6217         | 42.45%            | 1.4808        |
+| ResNet50                         | 7                    | ImageNet     | 19.09%             | 1.9099         | 19.52%            | 1.9204        |
+| ResNet50V2                       | 7                    | ImageNet     | 22.23%             | 1.8511         | 24.76%            | 1.7979        |
+| EfficientNetB0                   | 2 (binary)           | ImageNet     | 88.37%             | 0.6600         | 58.76%            | Not Recorded  |
+| ResNet50                         | 2 (reduced from 4)   | ImageNet     | 76.72%             | 0.5224         | 64.48%            | 0.6279        |
+| ResNet50V2                       | 2 (binary)           | ImageNet     | 81.86%             | 0.4552         | 70.05%            | 0.5868        |
+| Sequential (Custom CNN)          | 2 (binary)           | None         | 90.28%             | 0.2392         | 89.04%            | 0.2611        |
+| Sequential V2 (Custom CNN)       | 4                    | None         | 96.68%             | 0.1246         | 94.68%            | 0.2155        |
+
 
 ### **Key Findings**
 - Class reduction improved performance
